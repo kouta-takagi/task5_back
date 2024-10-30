@@ -11,7 +11,7 @@
 require 'faker'
 
 10.times do |i|
-  Product.create(name: Faker::Commerce.unique.product_name, price: Faker::Commerce.price(range: 1.0..100.0))
+  Product.create(name: Faker::Commerce.unique.product_name, price: Faker::Commerce.price(range: 500..10000))
 end
 
 Product.first.cart_items.create(quantity: 3)
