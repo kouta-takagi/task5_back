@@ -18,7 +18,7 @@ class CartItemsController < ApplicationController
   end
 
   def update
-    @cart_item = CartItem.find(params[:product_id])
+    @cart_item = CartItem.find(params[:id])
     if @cart_item.update(cart_item_params)
       @cart_items = CartItem.includes(:product)
       render json: @cart_items, include: :product
@@ -30,6 +30,8 @@ class CartItemsController < ApplicationController
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
+    @cart_items = CartItem.includes(:product)
+    render json: @cart_items, include: :product
   end
 
   private
